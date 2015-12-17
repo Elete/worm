@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>贪吃蛇</title>
+		<script src="Node.js" type="text/javascript" charset="utf-8"></script>
+		<script src="Stage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="Worm.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function load() {
+				//获取canvas Content
+				var canvas = document.getElementById("myCanvas");
+				var ctx = canvas.getContext("2d");
+				//创建Stage舞台对象
+				var stage = new Stage();
+				stage.print(ctx);
+				//每隔300毫秒走一步
+				window.setInterval(function() {
+					stage.worm.step();
+					stage.print(ctx);
+				}, 100)
+			}
+
+			function changeDir(directory) {
+				dir = directory;
+			}
+		</script>
+		<style type="text/css">
+			canvas {
+				border: 1px solid orchid;
+			}
+			
+			.btn {
+				width: 50px;
+				height: 50px;
+				border: 1px solid black;
+				text-align: center;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body onload="load()">
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<br />
+		<table cellpadding="0" cellpadding="0">
+			<tr>
+				<td></td>
+				<td>
+					<div class="btn" onclick="changeDir(UP)">UP</div>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<div class="btn" onclick="changeDir(LEFT)" ">Left</div>
+				</td>
+				<td></td>
+				<td>
+					<div class="btn " onclick="changeDir(RIGHT) "">right</div>
+				</td>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<div class="btn" onclick="changeDir(BOTTOM)" ">bottom</div>
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</body>
+
+</html>
